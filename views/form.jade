@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 Create New Message
+    form(action="/new" method="post")
+        input(type="text" name="username" placeholder="Username")
+        textarea(name="content" placeholder="Message content...")
+        button(type="submit") Create Message
