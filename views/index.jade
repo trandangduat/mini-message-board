@@ -4,10 +4,11 @@ block content
   h1= title
   p Welcome to #{title}
 
-  #messages
-    ul
+  #msg_container
+    a(href='/new') New Message
+    ul#messages
       - for (let i = messages.length - 1; i >= 0; i--)
         li.message
-          p#username= messages[i].user
+          p#username= messages[i].user + ':'
           p#content= messages[i].text
           p#date= messages[i].added
