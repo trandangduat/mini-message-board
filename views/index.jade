@@ -6,9 +6,9 @@ block content
 
   #messages
     ul
-      each message in messages.reverse()
+      - for (var i = messages.length - 1; i >= 0; i--)
         li
-          p= message.text
-          p= message.user
-          p= message.added
+          p= messages[i].text
+          p= messages[i].user
+          p= messages[i].added
 
