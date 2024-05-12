@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const dayjs = require('dayjs');
+const relativeTime = require('dayjs/plugin/relativeTime');
+dayjs.extend(relativeTime);
 
 const messages = [
   {
@@ -16,7 +19,13 @@ const messages = [
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Message Board', messages: messages });
+  const formattedMessages = messages.map((message) => {
+    return {
+      ...message,
+      added: dayjs(message.added).fromNow(true)
+    }
+  });
+  res.render('index', { title: 'Message Board', messages: formattedMessages });
 });
 
 router.get('/new', function(req, res, next) {
